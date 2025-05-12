@@ -23,10 +23,15 @@ repositories {
     mavenCentral()
 }
 
+val mapStructVersion = "1.6.3"
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.liquibase:liquibase-core")
+    implementation("org.mapstruct:mapstruct:${mapStructVersion}")
+    implementation("org.mapstruct:mapstruct-processor:${mapStructVersion}")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.projectlombok:lombok")
