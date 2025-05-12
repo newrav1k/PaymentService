@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-create-payment-transaction-table
+      author: newrav1k
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_paymenttransaction
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: DATETIME
+              - column:
+                  name: updated_at
+                  type: DATETIME
+              - column:
+                  name: version
+                  type: BIGINT
+              - column:
+                  name: amount
+                  type: DECIMAL
+              - column:
+                  name: currency
+                  type: VARCHAR(255)
+              - column:
+                  name: payment_transactional_status
+                  type: VARCHAR(255)
+              - column:
+                  name: error_message
+                  type: VARCHAR(255)
+              - column:
+                  name: source_bank_account_id
+                  type: BIGINT
+            tableName: payment_transaction
+  - changeSet:
+      id: 1747050909323-4
+      author: newrav1k
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: source_bank_account_id
+            baseTableName: payment_transaction
+            constraintName: FK_PAYMENTTRANSACTION_ON_SOURCEBANKACCOUNTID
+            referencedColumnNames: id
+            referencedTableName: bank_account
+

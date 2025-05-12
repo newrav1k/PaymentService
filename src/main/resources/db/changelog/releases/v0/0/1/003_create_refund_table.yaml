@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1747051436309-3
+      author: newrav1k
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_refund
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: DATETIME
+              - column:
+                  name: updated_at
+                  type: DATETIME
+              - column:
+                  name: version
+                  type: BIGINT
+              - column:
+                  name: refunded_amount
+                  type: DECIMAL
+              - column:
+                  name: reason
+                  type: VARCHAR(255)
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  name: payment_transactional_id
+                  type: BIGINT
+            tableName: refund
+  - changeSet:
+      id: 1747051436309-5
+      author: newrav1k
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: payment_transactional_id
+            baseTableName: refund
+            constraintName: FK_REFUND_ON_PAYMENTTRANSACTIONALID
+            referencedColumnNames: id
+            referencedTableName: payment_transaction
+
