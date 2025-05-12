@@ -21,7 +21,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentTransactional extends BaseEntity {
+public class PaymentTransaction extends BaseEntity {
 
     private BigDecimal amount;
 
